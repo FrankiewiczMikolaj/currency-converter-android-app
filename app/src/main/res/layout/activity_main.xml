@@ -7,12 +7,52 @@
     android:background="#333333"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="384dp"
+        android:layout_height="91dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="17dp"
+        android:src="@drawable/logo_no_background" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/responseCardView"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#404040"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/responseTextView"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Loading"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="wrap_content"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="16dp"
+        android:layout_below="@id/responseCardView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="#404040"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
@@ -39,11 +79,10 @@
                     android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
                     android:drawablePadding="8dp"
                     android:hint="USD"
-                    android:textColorHint="#000000"
                     android:padding="12dp"
+                    android:textColorHint="#000000"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                 />
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/firstCurrencyValue"
@@ -75,8 +114,8 @@
                     android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
                     android:drawablePadding="8dp"
                     android:hint="PLN"
-                    android:textColorHint="#000000"
                     android:padding="12dp"
+                    android:textColorHint="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -95,5 +134,4 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>

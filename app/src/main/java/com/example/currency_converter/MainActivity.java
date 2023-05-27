@@ -26,6 +26,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.text.HtmlCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -67,9 +68,11 @@ public class MainActivity extends AppCompatActivity {
     EditText secondCurrencyValue;
     Currency secondPickedCurrency;
     TextView lastClickedCurrencyPicker;
+    TextView responseTextView;
     JSONArray exchangeRateTable;
     List<Currency> currencyList = new ArrayList<>();
     Dialog dialog;
+    String output = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
     // Performs specific actions based on the selected menu item.
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         // Handle item selection
@@ -134,6 +138,13 @@ public class MainActivity extends AppCompatActivity {
                 exchangeRateTable = new JSONArray(response);
                 // Retrieves the first object from the array
                 JSONObject tableObject = exchangeRateTable.getJSONObject(0);
+                // Writes additional information about received table
+                responseTextView = findViewById(R.id.responseTextView);
+                output += "<b>Actual rate is based on below NBP table</b>"
+                        + "<br><b>Type: </b>" + tableObject.getString("table")
+                        + "<br><b>Number: </b>" + tableObject.getString("no")
+                        + "<br><b>Effective Date: </b>" + tableObject.getString("effectiveDate");
+                responseTextView.setText(HtmlCompat.fromHtml(output, HtmlCompat.FROM_HTML_MODE_LEGACY));
                 // Retrieves the "rates" table from the tableObject
                 JSONArray ratesArray = tableObject.getJSONArray("rates");
                 // Iterates through the elements in the "rates" collection
@@ -253,8 +264,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void calculate (){
-                if(firstPickedCurrency != null && secondPickedCurrency != null && firstCurrencyValue.getText().toString().isEmpty() == false) {
-                    double result = Double.valueOf(firstCurrencyValue.getText().toString())*Double.valueOf(firstPickedCurrency.getCurrencyMid())/Double.valueOf(secondPickedCurrency.getCurrencyMid());
+                if(firstPickedCurrency != null && secondPickedCurrency != null && !firstCurrencyValue.getText().toString().isEmpty()) {
+                    double result = Double.parseDouble(firstCurrencyValue.getText().toString())*Double.parseDouble(firstPickedCurrency.getCurrencyMid())/Double.parseDouble(secondPickedCurrency.getCurrencyMid());
                     String resultString = String.valueOf(Math.round(result * 100.0) / 100.0);
                     secondCurrencyValue.setText(resultString);
                 }else {
