@@ -3,6 +3,7 @@ package com.example.currency_converter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
@@ -11,6 +12,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -100,6 +104,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+    // Inflates the menu resource file and adds it to the ActionBar
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.converter_menu, menu);
+        return true;
+    }
+    // Performs specific actions based on the selected menu item.
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        // Handle item selection
+        switch (item.getItemId()){
+            case R.id.action_info:
+                Intent i=new Intent(this, InfoActivity.class);
+                startActivity(i);
+                return true;
+            case R.id.action_exit:
+                finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
     private void sendRequestNBP() {
         String URL = "https://api.nbp.pl/api/exchangerates/tables/A/?format=json";
