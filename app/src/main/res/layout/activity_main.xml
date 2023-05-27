@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="#404040"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/firstCurrencyPicker"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:backgroundTint="#bfbfbf"
+                    android:drawableStart="@drawable/usd"
+                    android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
+                    android:drawablePadding="8dp"
+                    android:hint="USD"
+                    android:textColorHint="#000000"
+                    android:padding="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                 />
+
+                <EditText
+                    android:id="@+id/firstCurrencyValue"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:digits="0123456789.,"
+                    android:hint="Enter your value"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/secondCurrencyPicker"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:backgroundTint="#bfbfbf"
+                    android:drawableStart="@drawable/pln"
+                    android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
+                    android:drawablePadding="8dp"
+                    android:hint="PLN"
+                    android:textColorHint="#000000"
+                    android:padding="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/secondCurrencyValue"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:digits="0123456789.,"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
